@@ -1,0 +1,56 @@
+1. Low-Level Design (LLD)
+The LLD will describe the components of the system and their interactions in detail.
+
+Detailed Description of Each Component
+User Service: Manages user-related operations such as signup, login, user updates, etc.
+Discussion Service: Handles creation, updating, deletion, and retrieval of discussions.
+Comment Service: Manages comments on discussions, including creation, updating, and deletion.
+Like Service: Handles liking functionality for discussions and comments.
+Search Service: Facilitates searching for users and discussions based on criteria.
+Diagram Illustrating the System Architecture
+ (This is a placeholder, the actual diagram will be created as part of the implementation)
+
+2. System Architecture and Microservices
+We'll break down the system into microservices:
+
+User Service
+Discussion Service
+Comment Service
+Like Service
+Search Service
+Auth Service (for login and signup)
+3. Database Schema
+We'll use SQL for our database. Below are the table definitions and relationships:
+
+Users (user_id, name, mobile_no, email, password)
+Discussions (discussion_id, user_id, text, image, created_on, view_count)
+Hashtags (hashtag_id, tag)
+DiscussionHashtags (discussion_id, hashtag_id)
+Comments (comment_id, discussion_id, user_id, text, created_on)
+Likes (like_id, user_id, discussion_id, comment_id)
+Followers (follower_id, user_id, followed_user_id)
+4. API Design and Documentation
+We'll use Flask for creating the API endpoints.
+
+User Service API
+Create User: POST /users
+Update User: PUT /users/{user_id}
+Delete User: DELETE /users/{user_id}
+Show List of Users: GET /users
+Search User by Name: GET /users/search?name={name}
+Discussion Service API
+Create Discussion: POST /discussions
+Update Discussion: PUT /discussions/{discussion_id}
+Delete Discussion: DELETE /discussions/{discussion_id}
+Get Discussions by Tags: GET /discussions/tags?tag={tag}
+Get Discussions by Text: GET /discussions/search?text={text}
+Comment Service API
+Add Comment: POST /comments
+Update Comment: PUT /comments/{comment_id}
+Delete Comment: DELETE /comments/{comment_id}
+Like Service API
+Like a Discussion: POST /likes/discussion/{discussion_id}
+Like a Comment: POST /likes/comment/{comment_id}
+Follow Service API
+Follow a User: POST /followers/{user_id}
+Unfollow a User: DELETE /followers/{user_id}
